@@ -2,7 +2,7 @@
  
  Kalimah App - JS
  
-The Quran-based web app intended to strengthen your companionship with the Quran
+The Quran-based web app intended to strengthen your companionship with the Quran and Arabic language.
 
 After starting the challenge, a verse and it's transaltion will be presented from the Quran. One word will be missing form the traslation.
 
