@@ -11,10 +11,8 @@ const hiddenContent = document.querySelector("#hiddenContent");
 const successMsg = document.querySelector("#successMsg");
 
 // function to apply when doing challenges from different specific juzzs. including the max verse
-function randomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-let randomVerse
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+let randomVerse;
 async function getEngVerseDetails() {
   // random verse from the whole quran
 randomVerse = randomInt(1, 6236);
@@ -44,7 +42,7 @@ randomVerse = randomInt(1, 6236);
   return verseDetails;
 }
 
-async function getArabicVerseDetails() {
+ const getArabicVerseDetails = async () => {
   const urlAr = `https://api.alquran.cloud/v1/ayah/${randomVerse}/ar`;
   const responseAr = await fetch(urlAr);
   const json = await responseAr.json();
@@ -52,7 +50,7 @@ async function getArabicVerseDetails() {
   return verseAr;
 }
 
-async function getTafsir() {
+ const getTafsir = async () => {
   const urlTaf = `https://api.alquran.cloud/v1/ayah/${randomVerse}/ar.muyassar`;
   const responseTaf = await fetch(urlTaf);
   const json = await responseTaf.json();
@@ -60,24 +58,23 @@ async function getTafsir() {
   return tafsir;
 }
 
-function refreshContent() {
+const refreshContent = () => 
   // tafsirH.hidden=true
   // missingWordH.hidden=true
   hiddenContent.hidden = true;
   revealBtn.innerHTML = "Reveal";
   submitBtn.innerHTML = "Submit";
-  textInput.value = ""
-  successMsg.innerHTML = ""
-}
+  textInput.value = "";
+  successMsg.innerHTML = "";
 
-function showContent() {
+const showContent = () => {
   // tafsirH.hidden=false
   // missingWordH.hidden=false
   hiddenContent.hidden = false;
   readyNextVerse();
 }
 
-async function getVerseAndMissingWord() {
+ const getVerseAndMissingWord = async () => {
   console.log("getVerseAndMissingWord running");
   verseDetails = await getEngVerseDetails();
   verseDetails.verseAr = await getArabicVerseDetails();
@@ -92,9 +89,8 @@ async function getVerseAndMissingWord() {
   return verseDetails;
 }
 
-function inputLength() {
-  return textInput.value.length;
-}
+const inputLength = () => textInput.value.length;
+
 
 // # This function is needed to make the challenge case-sensitive, check the user\s input compared to the rigth answer, give a feedback message, and reveal the additional information only when the answer is correct
 function checkUserInput() {
@@ -117,7 +113,7 @@ function checkUserInput() {
   }
 }
 
-function readyNextVerse() {
+const readyNextVerse = () => {
   revealBtn.innerHTML = "Next Verse";
   submitBtn.innerHTML = "Next Verse";
 
@@ -130,13 +126,11 @@ function readyNextVerse() {
 }
 
 // # when the user gives up reveal the right answers, not sure how to explain this
-function revealAnswer() {
-  if (hiddenContent.hidden) {
+const revealAnswer = () => {if (hiddenContent.hidden) {
     showContent();
-  }
-}
+  }}
 
-function challenge() {
+const challenge = () => {
   // # hiding the answer from the beginning
   getVerseAndMissingWord();
   refreshContent();

@@ -66,6 +66,7 @@ body {
   display: flex;
   justify-content: center;
   margin: 0 25px;
+  margin-bottom: 20px;
   width: auto;
   height: auto;
 }
