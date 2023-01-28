@@ -32,22 +32,22 @@
 
 
                     <Table>
-                        <!-- This is where the verse should come -->
+
                         <h6>Surah and Verse number</h6>
-                        <p class="challengeP" id="surah"> </p>
-                        <!-- <h6>verse Number</h6>
-                        <p id="number"> Verse number:</p> -->
+                        <p class="challengeP" id="chapterName"> </p>
+
                         <h6>Verse</h6>
-                        <p class="challengeP" id="verseAr"><br></p>
-                        <h6>English Translation</h6>
                         <p class="challengeP" id="verse"><br></p>
+                        <button class="btn" id="audioBtn">Play</button>
+                        <h6>English Translation</h6>
+                        <p class="challengeP" id="verseTranslated"><br></p>
                     </Table>
                     <p id='successMsg'> </p>
                     <!-- This is the missing word -->
                     <div id="hiddenContent">
                         <h6> The Missing Word</h6>
                         <p class="challengeP" id="missingWord" name='missingWord'> </p>
-                        <h6>Tafsir Al-Muyasser</h6>
+                        <h6 id="tafsirName"></h6>
                         <p class="challengeP" id="tafsir" name='tafsir'> <br></p>
                     </div>
                 </div>
@@ -63,7 +63,8 @@
             </div>
     </div>
     </article>
-    <script type="text/javascript" src="script.js"></script>
+
+    <script type='module' src="script.js"></script>
 </body>
 
 </html>

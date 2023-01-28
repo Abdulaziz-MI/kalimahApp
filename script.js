@@ -1,68 +1,50 @@
-const verseH = document.querySelector("#verse");
-const surahH = document.querySelector("#surah");
-const numberH = document.querySelector("#number");
-const verseArH = document.querySelector("#verseAr");
-const tafsirH = document.querySelector("#tafsir");
-const textInput = document.querySelector("#textInput");
-const submitBtn = document.querySelector("#submitBtn");
-const revealBtn = document.querySelector("#revealBtn");
-const missingWordH = document.querySelector("#missingWord");
-const hiddenContent = document.querySelector("#hiddenContent");
-const successMsg = document.querySelector("#successMsg");
-
-// function to apply when doing challenges from different specific juzzs. including the max verse
-function randomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-let randomVerse
-async function getEngVerseDetails() {
-  // random verse from the whole quran
-randomVerse = randomInt(1, 6236);
-  const url = `https://api.alquran.cloud/v1/ayah/${randomVerse}/en.hilali`;
-  const responseEn = await fetch(url);
-  const json = await responseEn.json();
-  let verse = json.data.text;
-  const surah = json.data.surah.englishName;
-  const number = json.data.numberInSurah;
-  verse = verse.split(" ");
-  const randomWordIndex = randomInt(0, verse.length - 1);
-  const regex = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g;
-  let missingWord = verse[randomWordIndex].replace(regex, "").toLowerCase();
-  if ((missingWord == "v")) {
-    missingWord = verse[randomWordIndex].replace(regex, "").toLowerCase();
-  }
-  console.log(`missingWord in getEnglishVerseDetails: ${missingWord}`);
-  verse[randomWordIndex] = "____";
-  verse = verse.join(" ");
-  const verseDetails = {
-    verse: verse,
-    surah: surah,
-    number: number,
-    missingWord: missingWord,
-  };
-
-  return verseDetails;
+import VerseDetails from './support/class.js';
+const verses = []
+const versesByIndex = []
+let selectedVerse = -1
+async function getVerseDetails(verseX) {
+  selectedVerse = selectedVerse + 1
+  verseX = new VerseDetails()
+  verseX.setRandomChapter()
+  verseX.getRandomVerseByChapter()
+  verses.push(verseX)
+  versesByIndex.push(verseX.verseIndex)
+  await verseX.getQuranAndAudio();
+  await verseX.getTafsir()
+  console.log(selectedVerse);
+  console.log(verses);
+  return verseX
 }
 
-async function getArabicVerseDetails() {
-  const urlAr = `https://api.alquran.cloud/v1/ayah/${randomVerse}/ar`;
-  const responseAr = await fetch(urlAr);
-  const json = await responseAr.json();
-  const verseAr = json.data.text;
-  return verseAr;
-}
+await challenge();
 
-async function getTafsir() {
-  const urlTaf = `https://api.alquran.cloud/v1/ayah/${randomVerse}/ar.muyassar`;
-  const responseTaf = await fetch(urlTaf);
-  const json = await responseTaf.json();
-  const tafsir = json.data.text;
-  return tafsir;
-}
+
+console.log(verses[selectedVerse]);
+console.log(selectedVerse);
+console.log(verses);
+
+
+let verseAudio = new Audio(verses[selectedVerse].audio);
+const audioBtn = document.querySelector("#audioBtn");
+audioBtn.addEventListener("click", (e) => {
+  e.preventDefault()
+  console.log(verses[selectedVerse])
+  verseAudio.src = verses[selectedVerse].audio;
+  return verseAudio ? verseAudio.play() : verseAudio.pause();
+});
 
 function refreshContent() {
-  // tafsirH.hidden=true
-  // missingWordH.hidden=true
+  const verse = document.querySelector('#verse').innerHTML = verses[selectedVerse].verse
+  const verseTranslated = document.querySelector("#verseTranslated").innerHTML = verses[selectedVerse].verseForChallenge
+  const chapterName = document.querySelector("#chapterName").innerHTML = `${verses[selectedVerse].chapterName}, verse ${verses[selectedVerse].verseIndex}  `
+  const missingWord = document.querySelector('#missingWord').innerHTML = verses[selectedVerse].missingWord
+  const tafsir = document.querySelector('#tafsir').innerHTML = verses[selectedVerse].tafsir
+  const tafsirName = document.querySelector('#tafsirName').innerHTML = `Tafsir: ${verses[selectedVerse].tafsirName}`
+  const textInput = document.querySelector("#textInput");
+  const submitBtn = document.querySelector("#submitBtn");
+  const revealBtn = document.querySelector("#revealBtn");
+  const hiddenContent = document.querySelector("#hiddenContent");
+  const successMsg = document.querySelector("#successMsg");
   hiddenContent.hidden = true;
   revealBtn.innerHTML = "Reveal";
   submitBtn.innerHTML = "Submit";
@@ -77,37 +59,16 @@ function showContent() {
   readyNextVerse();
 }
 
-async function getVerseAndMissingWord() {
-  console.log("getVerseAndMissingWord running");
-  verseDetails = await getEngVerseDetails();
-  verseDetails.verseAr = await getArabicVerseDetails();
-  verseDetails.tafsir = await getTafsir();
-
-  verseArH.innerHTML = verseDetails.verseAr;
-  verseH.innerHTML = verseDetails.verse;
-  surahH.innerHTML = verseDetails.surah + ", " + verseDetails.number;
-  //   numberH.innerHTML = verseDetails.number;
-  tafsirH.innerHTML = verseDetails.tafsir;
-  missingWordH.innerHTML = verseDetails.missingWord;
-  return verseDetails;
-}
-
 function inputLength() {
   return textInput.value.length;
 }
 
-// # This function is needed to make the challenge case-sensitive, check the user\s input compared to the rigth answer, give a feedback message, and reveal the additional information only when the answer is correct
 function checkUserInput() {
-  console.log("verseDetails");
-  console.log(verseDetails);
-
-  console.log("textInput.value.toLowerCase()");
-  console.log(textInput.value.toLowerCase());
 
   if (inputLength() == 0) {
-    successMsg.innerHTML = "please type a word";
+    successMsg.innerHTML = "Please type a word";
   } else {
-    if (textInput.value.toLowerCase() === verseDetails.missingWord) {
+    if (textInput.value.toLowerCase() === verses[selectedVerse].missingWord) {
       successMsg.innerHTML = "Well done";
       showContent();
     } else {
@@ -118,6 +79,7 @@ function checkUserInput() {
 }
 
 function readyNextVerse() {
+  //   there is an error with this function next verse is constant
   revealBtn.innerHTML = "Next Verse";
   submitBtn.innerHTML = "Next Verse";
 
@@ -136,11 +98,11 @@ function revealAnswer() {
   }
 }
 
-function challenge() {
+async function challenge() {
   // # hiding the answer from the beginning
-  getVerseAndMissingWord();
+  await getVerseDetails();
   refreshContent();
-
+  //   there is an issue witht the buttons possibly due to this
   submitBtn.removeEventListener("click", challenge);
   submitBtn.addEventListener("click", checkUserInput);
 
@@ -156,4 +118,11 @@ function challenge() {
   });
 }
 
-challenge();
+
+
+
+// update selected verse value on user interaction
+// document.querySelector("#verseSelector").addEventListener("change", (e) => {
+//     e.preventDefault()
+//     selectedVerse = e.target.value;
+// });
