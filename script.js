@@ -1,19 +1,18 @@
 import VerseDetails from './support/class.js';
+
 const verses = []
-const versesByIndex = []
-let selectedVerse = -1
-async function getVerseDetails(verseX) {
-  selectedVerse = selectedVerse + 1
-  verseX = new VerseDetails()
-  verseX.setRandomChapter()
-  verseX.getRandomVerseByChapter()
-  verses.push(verseX)
-  versesByIndex.push(verseX.verseIndex)
-  await verseX.getQuranAndAudio();
-  await verseX.getTafsir()
+let selectedVerse = 0
+
+async function getVerseDetails(verse) {
+  verse = new VerseDetails()
+  verses.push(verse)
+  verse.setRandomChapter()
+  verse.getRandomVerseByChapter()
+  await verse.getQuranAndAudio();
+  await verse.getTafsir()
   console.log(selectedVerse);
   console.log(verses);
-  return verseX
+  return verse
 }
 
 await challenge();
@@ -80,6 +79,7 @@ function checkUserInput() {
 
 function readyNextVerse() {
   //   there is an error with this function next verse is constant
+
   revealBtn.innerHTML = "Next Verse";
   submitBtn.innerHTML = "Next Verse";
 
@@ -97,17 +97,26 @@ function revealAnswer() {
     showContent();
   }
 }
+console.log(selectedVerse);
+previousVerse.addEventListener("click", function () {selectedVerse = selectedVerse - 1
+  console.log(selectedVerse), challenge(); return challenge()})
+nextVerse.addEventListener("click", function () {  selectedVerse = selectedVerse + 1
+  console.log(selectedVerse), challenge(); return challenge()})
 
 async function challenge() {
   // # hiding the answer from the beginning
   await getVerseDetails();
   refreshContent();
   //   there is an issue witht the buttons possibly due to this
+
+  
   submitBtn.removeEventListener("click", challenge);
   submitBtn.addEventListener("click", checkUserInput);
-
+  
   revealBtn.removeEventListener("click", challenge);
   revealBtn.addEventListener("click", revealAnswer);
+
+
 
   textInput.addEventListener("keypress", (event) => {
     if (event.keyCode === 13) {
