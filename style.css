@@ -126,7 +126,7 @@ h6 {
 .btn:hover {
   transform: translateY(-0.25em);
 }
-#audioBtn {
+div.btns > button {
   padding-top: clamp(0.25rem, 1vw + 0.5rem, 1rem);
   padding-bottom: clamp(0.25rem, 1vw + 0.5rem, 1rem);
   padding-right: clamp(3rem, 1vw + 0.5rem, 6rem);
