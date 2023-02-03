@@ -1,6 +1,8 @@
-import MetaData from './support/MetaData.js';
-import VerseData from './support/VerseData.js';
 import DomEngine from './support/DomEngine.js';
+// Two nested classes used in DomEngine.js
+// import MetaData from './support/MetaData.js';
+// import VerseData from './support/VerseData.js';
+
 
 const domEngine = new DomEngine();
 
