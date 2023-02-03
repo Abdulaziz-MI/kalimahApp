@@ -1,6 +1,6 @@
 # kalimahApp 
  
- Kalimah - https://abdulaziz-mi.github.io/kalimahApp/
+ Kalimah - https://abdulaziz-mi.github.io/kalimah_app/
  
 The Quran-based web app intended to strengthen your companionship with the Quran and Arabic language.
 
