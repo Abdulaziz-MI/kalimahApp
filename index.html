@@ -24,15 +24,12 @@
                 <h4>The Quran-based App intended to strengthen your companionship with the Quran</h4>
             </header>
         </div>
+
         <article class="sectionDiv">
-
             <div class="row justify-content-around align-content-center">
-
                 <div class="col-12" id="centerDiv">
 
-
                     <Table>
-
                         <h6>Surah and Verse number</h6>
                         <p class="challengeP" id="chapterName"> </p>
 
@@ -40,16 +37,17 @@
                         <p class="challengeP" id="verse"><br></p>
 
                         <div class="btns">
-                        <button class="btn" id="previousVerseBtn">Previous</button>
-                        <button class="btn" id="audioBtn">Play</button>
-                        <button class="btn" id="nextVerseBtn">Next</button>
-                    </div>
+                            <button class="btn" id="previousVerseBtn">Previous</button>
+                            <button class="btn" id="audioBtn">Play</button>
+                            <button class="btn" id="nextVerseBtn">Next</button>
+                        </div>
 
                         <h6>English Translation</h6>
                         <p class="challengeP" id="verseTranslated"><br></p>
                     </Table>
-                    <p id='successMsg'> </p>
-                    <!-- This is the missing word -->
+
+                    <p id='successMsg'></p>
+
                     <div id="hiddenContent">
                         <h6> The Missing Word</h6>
                         <p class="challengeP" id="missingWord" name='missingWord'> </p>
@@ -57,20 +55,21 @@
                         <p class="challengeP" id="tafsir" name='tafsir'> <br></p>
                     </div>
                 </div>
+
                 <div class="inputGaps">
-                    <!-- This is where the input box should go -->
+
                     <input id="textInput" autocomplete="off" class="textInput col-10  " type="text"
                         placeholder="Enter the Missing word">
-                    <!-- This is the submit button which should POST the word to Main.py and compare it to the missing word -->
 
                     <button class="btn col-5 " id="submitBtn" name="submitBtn" type="submit">Submit</button>
                     <button class="btn col-5 " id="revealBtn" name="revealBtn" type="submit">Reveal</button>
                 </div>
+                
             </div>
     </div>
     </article>
 
-    <script type="module"  src="script.js"></script>
+    <script type="module" src="script.js"></script>
 
 
 
