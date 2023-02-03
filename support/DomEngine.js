@@ -36,8 +36,6 @@ export default class DomEngine {
   }
 
   setDomValues(verseDetails) {
-
-
     this.verse.innerHTML = verseDetails.verse
     this.verseTranslated.innerHTML = verseDetails.verseForChallenge
     this.chapterName.innerHTML = `${verseDetails.chapterName}, verse ${verseDetails.verseIndex}  `
@@ -96,15 +94,12 @@ export default class DomEngine {
 
   toggleAudio(e) {
     e.preventDefault()
-    console.log(verseDetails)
-    this.verseAudio = new Audio(verseDetails.audio)
-
-    return this.verseAudio ? this.verseAudio.play() : this.verseAudio.pause();
+    this.verseAudio = new Audio(this.verses[this.selectedVerse].audio)
+return this.verseAudio ? this.verseAudio.play() : this.verseAudio.pause();
   }
 
   showContent() {
-    // tafsirH.hidden=false
-    // missingWordH.hidden=false
+
     return hiddenContent.hidden = false;
   }
 
