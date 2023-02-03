@@ -1,34 +1,18 @@
-// from github
-import data from './metadata.json' assert { type: 'json' };
 
-export default class VerseDetails {
-    constructor(chapterIndex) {
-        this.chapterIndex = chapterIndex
-        // egt api from here
-    }
+
+
+
+
+export default class VerseData {
+    constructor(verseIndex) {
+        this.verseIndex = verseIndex
+}
+
     randomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-    setRandomChapter() {
-        this.chapterIndex = this.randomInt(0, data.length)
-    }
-
     // ********* this  will return a random verse from a specific surah number using the parametre
-    getRandomVerseByChapter(chapterIndex) {
-        this.chapter = data[this.chapterIndex - 1]
-        // console.log(this.chapter);
-        // this.chapterNumber = this.chapter.chapter
-        // console.log(this.chapterNumber);
-        this.chapterName = `${this.chapter.name} (${this.chapter.translated_name})`
-        // this.chapterEngName = chapter.translated_name
-        // console.log(this.chapterName);
-        this.verseCount = this.chapter.verse_count
-        // console.log(` Verse Count(${this.verseCount})`);
-        this.randomVerse = this.randomInt(1, this.verseCount)
-        // console.log(this.randomVerse);
 
-        this.verseIndex = `${this.chapterIndex}:${this.randomVerse}`
-    }
 
     // *********
     // The two params will be this by default but I plan to give users a choice.
@@ -50,36 +34,31 @@ export default class VerseDetails {
         }
         this.verseForChallenge[this.randomWordIndex] = "____";
         this.verseForChallenge = this.verseForChallenge.join(" ");
-        this.audioFile = json.verse.audio.url
-        this.audio = `https://verses.quran.com/${this.audioFile}`
-        return {
-            verse: this.verse,
-            verseTranslated: this.verseTranslated,
-            verseForChallenge: this.verseForChallenge,
-            missingWord: this.missingWord,
-            audio: this.audio
-        }
+        this.audio = `https://verses.quran.com/${json.verse.audio.url}`
+  
 
     }
 
     // *********
     // This will be the default param but I plan to give users a choice.
-    async getTafsir(tafsir = 14) {
+     async getTafsir(tafsir = 14) {
         const url = `https://api.quran.com/api/v4/tafsirs/${tafsir}/by_ayah/${this.verseIndex}`;
         const response = await fetch(url);
         const json = await response.json();
         // console.log(json);
         this.tafsirName = json.tafsir.resource_name;
-        this.translatedTafsirName = json.tafsir.translated_name.name;
         this.tafsirName = `${json.tafsir.resource_name} (${json.tafsir.translated_name.name})`
-        // console.log(`${this.tafsirName} (${this.translatedTafsirName})`);
         this.tafsir = json.tafsir.text;
-        return {
-            tafsirName: this.tafsirName,
-            tafsir: this.tafsir,
 
-        }
     };
+
+async getDataFromAPI(){
+    await this.getQuranAndAudio();
+    delete this.audioFile
+    delete this.randomWordIndex
+    await this.getTafsir()
+    return this
+}
 
 
 }
