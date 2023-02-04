@@ -8,8 +8,6 @@ export default class DomEngine {
 
     this.metaData = new MetaData();
 
-
-
     this.verses = []
     this.selectedVerse = 0
     this.verse = document.querySelector('#verse')
@@ -76,7 +74,7 @@ export default class DomEngine {
     if (this.inputLength() === 0) {
       successMsg.innerHTML = "Please type a word";
     } else {
-      if (textInput.value.toLowerCase() === verseDetails.missingWord) {
+      if (textInput.value.toLowerCase() === this.verses[this.selectedVerse].missingWord) {
         successMsg.innerHTML = "Well done";
         this.showContent();
       } else {
