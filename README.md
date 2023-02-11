@@ -1,9 +1,11 @@
 # kalimahApp 
-
 The Quran-based web app is intended to strengthen your companionship with the Quran and Arabic language.
+
 
 Kalimah - https://abdulaziz-mi.github.io/kalimah_app/
 (since this is running on GitHub at the moment please be patient as it might take a minute to load)
+
+ <img width="1439" alt="Screenshot 2023-02-10 at 15 31 22" src="https://user-images.githubusercontent.com/107209170/218256635-2d225088-90a1-4bff-9c0c-e6a7ce0bd230.png">
 
 ## :ledger: Table Of Content 
 
@@ -30,8 +32,6 @@ For this API I used Postman to help me with the header I had to develop a method
 I used support/metadata.json which has each chapter of the Quran and their verse count alongside other information.
 
 ## Challenge
-
- <img width="1439" alt="Screenshot 2023-02-10 at 15 31 22" src="https://user-images.githubusercontent.com/107209170/218256635-2d225088-90a1-4bff-9c0c-e6a7ce0bd230.png">
 
 A random verse and its translation will be presented from the Quran. One word will be missing from the translation. The user is expected to read the Arabic verse and figure out the missing word from the translation, using the text input. After submitting the correct answer, a scholarly explanation of the verse will be displayed with a success message. There is also a reveal button in case the user gets stuck.
 
