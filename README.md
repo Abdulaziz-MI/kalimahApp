@@ -11,6 +11,7 @@ Kalimah - https://abdulaziz-mi.github.io/kalimah_app/
 
 - [About](#beginner-about)
 - [Technology](#zap-technology)
+- [Challenge](#computer-challenge)
 - [Development](#wrench-development)
 
 
@@ -31,7 +32,7 @@ https://quran.api-docs.io/v4/getting-started/introduction
 For this API I used Postman to help me with the header I had to develop a method of getting a verse index in this format ${01:01}
 I used support/metadata.json which has each chapter of the Quran and their verse count alongside other information.
 
-## Challenge
+## :computer: Challenge
 
 A random verse and its translation will be presented from the Quran. One word will be missing from the translation. The user is expected to read the Arabic verse and figure out the missing word from the translation, using the text input. After submitting the correct answer, a scholarly explanation of the verse will be displayed with a success message. There is also a reveal button in case the user gets stuck.
 
