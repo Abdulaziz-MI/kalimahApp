@@ -21,6 +21,7 @@ Anyone that has learnt another language beyond their mother tongue will tell say
 
 ## :zap: Technology
 HTML | CCS and Bootstrap | Vanilla JavaScript.
+
 This is a front-end app that makes API get requests for the verse data via Quran.com's API:
 https://quran.api-docs.io/v4/getting-started/introduction
 
