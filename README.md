@@ -9,8 +9,6 @@ Kalimah - https://abdulaziz-mi.github.io/kalimah_app/
 
 - [About](#beginner-about)
 - [Technology](#zap-technology)
-- [Installation](#electric_plug-installation)
-- [Commands](#package-commands)
 - [Development](#wrench-development)
 
 
