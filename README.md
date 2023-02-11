@@ -20,7 +20,7 @@ Kalimah - https://abdulaziz-mi.github.io/kalimah_app/
 Add a detailed introduction about the project here, everything you want the reader to know.
 This web app is designed to aid students of the Arabic language and the Quran, to immerse themselves in the Arabic language through the Quran. 
 
-Anyone that has learnt another language beyond their mother tongue will tell say 'you must busy yourself with the language' they refer to reading listening and speaking the language. This app is designed for the user to fulfil that by listening, reading and pondering over Arabic verses.
+Anyone that has learnt another language beyond their mother tongue will tell say 'you must busy yourself with the language' they refer to reading, listening, and speaking the language. This app is designed for the user to fulfil that by listening, reading and pondering over Arabic verses and scholarly explanations.
 
 ## :zap: Technology
 HTML | CCS and Bootstrap | Vanilla JavaScript.
