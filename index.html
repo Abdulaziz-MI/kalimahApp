@@ -15,8 +15,6 @@
 </head>
 
 <body>
-
-
     <div class="sectionBack container-xl">
         <div class="sectionDiv">
             <header id="headingText">
@@ -25,38 +23,40 @@
             </header>
         </div>
 
-        <article class="sectionDiv">
-            <div class="row justify-content-around align-content-center">
-                <div class="col-12" id="centerDiv">
 
-                    <Table>
-                        <h6>Surah and Verse number</h6>
-                        <p class="challengeP" id="chapterName"> </p>
+        <div class="row justify-content-around align-content-center">
 
-                        <h6>Verse</h6>
-                        <p class="challengeP" id="verse"><br></p>
+            <div class="col-12" id="centerDiv">
 
-                        <div class="btns">
-                            <button class="btn" id="previousVerseBtn">Previous</button>
-                            <button class="btn" id="audioBtn">Play</button>
-                            <button class="btn" id="nextVerseBtn">Next</button>
-                        </div>
+                <h6>Surah and Verse number</h6>
+                <p class="challengeP" id="chapterName"></p>
 
-                        <h6>English Translation</h6>
-                        <p class="challengeP" id="verseTranslated"><br></p>
-                    </Table>
+                <h6>Verse</h6>
+                <p class="challengeP" id="verse"><br></p>
 
-                    <p id='successMsg'></p>
 
-                    <div id="hiddenContent">
-                        <h6> The Missing Word</h6>
-                        <p class="challengeP" id="missingWord" name='missingWord'> </p>
-                        <h6 id="tafsirName"></h6>
-                        <p class="challengeP" id="tafsir" name='tafsir'> <br></p>
-                    </div>
+                <div id="audioAndVerseSelectionDiv" class="inputDiv">
+                    <button class="verse-select btn col-1 " id="previousVerseBtn">&laquo;</button>
+
+                    <audio class="col-8" id="audioPlayer" controls></audio>
+
+                    <button class="verse-select btn col-1 " id="nextVerseBtn">&raquo;</button>
                 </div>
 
-                <div class="inputGaps">
+                <h6>English Translation</h6>
+                <p class="challengeP" id="verseTranslated"><br></p>
+
+
+                <p id='successMsg'></p>
+
+                <div id="hiddenContent">
+                    <h6> The Missing Word</h6>
+                    <p class="challengeP" id="missingWord" name='missingWord'> </p>
+                    <h6 id="tafsirName"></h6>
+                    <p class="challengeP" id="tafsir" name='tafsir'> <br></p>
+                </div>
+
+                <div class="inputDiv">
 
                     <input id="textInput" autocomplete="off" class="textInput col-10  " type="text"
                         placeholder="Enter the Missing word">
@@ -64,12 +64,12 @@
                     <button class="btn col-5 " id="submitBtn" name="submitBtn" type="submit">Submit</button>
                     <button class="btn col-5 " id="revealBtn" name="revealBtn" type="submit">Reveal</button>
                 </div>
-                
-            </div>
-    </div>
-    </article>
 
-    <script type="module" src="script.js"></script>
+            </div>
+        </div>
+        </article>
+
+        <script type="module" src="script.js"></script>
 
 
 

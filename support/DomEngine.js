@@ -21,19 +21,21 @@ export default class DomEngine {
     this.revealBtn = document.querySelector("#revealBtn");
     this.hiddenContent = document.querySelector("#hiddenContent");
     this.successMsg = document.querySelector("#successMsg");
-    this.audioBtn = document.querySelector("#audioBtn");
+    this.audioPlayer = document.querySelector("#audioPlayer");
+    this.reciterName = document.querySelector('.reciterName')
     this.previousVerseBtn = document.querySelector("#previousVerseBtn")
     this.nextVerseBtn = document.querySelector("#nextVerseBtn")
 
-    this.audioBtn.addEventListener("click", this.toggleAudio.bind(this));
     this.submitBtn.addEventListener("click", this.checkUserInput.bind(this));
     this.revealBtn.addEventListener("click", this.revealAnswer.bind(this));
     this.textInput.addEventListener("keypress", this.checkEnterKeyInput.bind(this));
     this.previousVerseBtn.addEventListener("click", this.goToPreviousVerse.bind(this));
     this.nextVerseBtn.addEventListener("click", this.goToNextVerse.bind(this));
+
   }
 
   setDomValues(verseDetails) {
+    console.log(verseDetails);
     this.verse.innerHTML = verseDetails.verse
     this.verseTranslated.innerHTML = verseDetails.verseForChallenge
     this.chapterName.innerHTML = `${verseDetails.chapterName}, verse ${verseDetails.verseIndex}  `
@@ -42,18 +44,20 @@ export default class DomEngine {
     this.tafsirName.innerHTML = `Tafsir: ${verseDetails.tafsirName}`
     this.hiddenContent.hidden = true;
     this.textInput.value = ""
+    // this.reciterName.innerHTML = `Audio ${verseDetails.reciterName}`
     this.successMsg.innerHTML = ""
+    this.verseAudio = this.verses[this.selectedVerse].audio
+    this.audioPlayer.src = this.verseAudio
   }
-
 
 
   goToNextVerse() {
     this.selectedVerse++
     console.log(this.selectedVerse)
     if (this.selectedVerse < this.verses.length)
-    this.setDomValues(this.verses[this.selectedVerse]) 
+      this.setDomValues(this.verses[this.selectedVerse])
     else
-    this.getNewVerse()
+      this.getNewVerse()
 
   }
 
@@ -62,7 +66,7 @@ export default class DomEngine {
     this.setDomValues(this.verses[this.selectedVerse])
     console.log(this.selectedVerse)
     console.log(this.verses[this.selectedVerse])
-      
+
   }
 
   inputLength() {
@@ -90,11 +94,7 @@ export default class DomEngine {
   }
 
 
-  toggleAudio(e) {
-    e.preventDefault()
-    this.verseAudio = new Audio(this.verses[this.selectedVerse].audio)
-return this.verseAudio ? this.verseAudio.play() : this.verseAudio.pause();
-  }
+
 
   showContent() {
 
@@ -118,12 +118,33 @@ return this.verseAudio ? this.verseAudio.play() : this.verseAudio.pause();
     //  spreading all the needed verse details in one object for ease of use
     const verseDetails = { ...this.metaData, ...verseData };
     console.log(verseDetails);
-    // pushing verse details into one array for the prev/next funcionality 
+    // pushing verse details into one array for the prev/next functionality 
     this.verses.push(verseDetails);
     console.log(this.verses);
     this.setDomValues(verseDetails);
-}
+  }
 
+
+  audioPlayer() {
+    // This will allow us to play video later...
+    this.verseAudio.load();
+    fetchVideoAndPlay();
+  }
+
+  fetchAudioAndPlay() {
+    fetch(this.verseAudio)
+      .then(response => response.blob())
+      .then(blob => {
+        this.verseAudio.srcObject = blob;
+        return this.verseAudio.play();
+      })
+      .then(_ => {
+        ` Video playback started ;)`
+      })
+      .catch(e => {
+        ` Video playback failed ;(`
+      })
+  }
 
 
 
