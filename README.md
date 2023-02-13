@@ -22,10 +22,10 @@ Kalimah - https://abdulaziz-mi.github.io/kalimah_app/
 
 ## :ledger: Table Of Content 
 
-- [About](#beginner-about)
-- [Technology](#zap-technology)
-- [Challenge](#computer-challenge)
-- [Development](#wrench-development)
+- [## About](#beginner-about)
+- [## Technology](#zap-technology)
+- [## Challenge](#computer-challenge)
+- [## Development](#wrench-development)
 
 
 
@@ -45,6 +45,7 @@ https://quran.api-docs.io/v4/getting-started/introduction
 For this API, I used Postman to help me with the get request. I had to develop a method of getting a verse index in this format ${A:B}
 
 A = Surah/Chapter
+
 B = Ayah/Verse
 
 I used support/metadata.json which has each chapter of the Quran and their verse count alongside other information. Then in MetaData.js, I developed methods to generate and store the needed data for the API and challenge. such as chapter name and verse index.
