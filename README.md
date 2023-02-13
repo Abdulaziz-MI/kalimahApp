@@ -1,7 +1,12 @@
 # kalimahApp 
 The Quran-based web app is intended to strengthen your companionship with the Quran and Arabic language.
 
-<img width="1440" alt="Screenshot 2023-02-13 at 16 29 42" src="https://user-images.githubusercontent.com/107209170/218515551-fb646536-055b-47b6-b913-5469b326edef.png">
+<img width="1440" alt="Screenshot 2023-02-13 at 16 31 35" src="https://user-images.githubusercontent.com/107209170/218515743-84d7a588-7644-4ef1-b990-99b52307c405.png">
+
+on Mobile with the answer revealed:
+
+<img width="494" alt="Screenshot 2023-02-13 at 16 32 54" src="https://user-images.githubusercontent.com/107209170/218516192-72165bae-8182-472f-bf4a-b924f67f9c89.png">
+
 
 Kalimah - https://abdulaziz-mi.github.io/kalimah_app/
 (since this is running on GitHub at the moment please be patient as it might take a minute to load)
