@@ -1,5 +1,5 @@
 # :fountain_pen: kalimah 
-The Quran-based web app is intended to strengthen your companionship with the Quran and Arabic language.
+The Quran-based application intended to strengthen your companionship with the Quran and Arabic language.
 
 Kalimah - https://abdulaziz-mi.github.io/kalimah_app/
 (since this is running on GitHub pages, It may take a minute to load)
