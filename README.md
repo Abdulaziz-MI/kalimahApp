@@ -4,7 +4,7 @@ The Quran-based web app is intended to strengthen your companionship with the Qu
 Kalimah - https://abdulaziz-mi.github.io/kalimah_app/
 (since this is running on GitHub pages, It may take a minute to load)
 
-## :computer: On Computers:
+## :computer: On Computer:
 
 <img width="1440" alt="Screenshot 2023-02-13 at 16 31 35" src="https://user-images.githubusercontent.com/107209170/218515743-84d7a588-7644-4ef1-b990-99b52307c405.png">
 
