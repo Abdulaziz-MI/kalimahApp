@@ -43,6 +43,7 @@ This is a front-end app that makes API get requests for the verse data via Quran
 https://quran.api-docs.io/v4/getting-started/introduction
 
 For this API, I used Postman to help me with the get request. I had to develop a method of getting a verse index in this format ${A:B}
+
 A = Surah/Chapter
 B = Ayah/Verse
 
