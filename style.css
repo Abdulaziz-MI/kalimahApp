@@ -109,6 +109,9 @@ h6 {
   flex-wrap: wrap;
   margin-bottom: clamp(1rem, 1vw + 1rem, 3rem);
 }
+#audioAndVerseSelectionDiv {
+  margin-top: clamp(1rem, 1vw + 0.5rem, 1.5rem);
+}
 .btn,
 .textInput {
   text-align: center;
@@ -145,19 +148,24 @@ h6 {
 }
 
 #centerDiv {
-  text-align: center;
   color: aliceblue;
   font-weight: bolder;
 }
 #centerDiv .challengeP,
 p {
-  text-align: center;
+  text-align: justify;
+  text-align-last: center;
   font-family: "montserrat";
   padding: 1px;
   color: rgb(174, 211, 247);
   font-weight: bolder;
   font-size: clamp(1.1rem, 1vw + 0.5rem, 1.8rem);
+  margin: 5px 30px;
 }
+#verse {
+  margin-bottom: 10px;
+}
+
 #successMsg {
   font-size: clamp(0.7rem, 1vw + 0.5rem, 1rem);
   font-style: italic;

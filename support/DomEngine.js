@@ -22,7 +22,7 @@ export default class DomEngine {
     this.hiddenContent = document.querySelector("#hiddenContent");
     this.successMsg = document.querySelector("#successMsg");
     this.audioPlayer = document.querySelector("#audioPlayer");
-    this.reciterName = document.querySelector('.reciterName')
+    // this.reciterName = document.querySelector('.reciterName')
     this.previousVerseBtn = document.querySelector("#previousVerseBtn")
     this.nextVerseBtn = document.querySelector("#nextVerseBtn")
 
@@ -33,7 +33,6 @@ export default class DomEngine {
     this.nextVerseBtn.addEventListener("click", this.goToNextVerse.bind(this));
 
   }
-
   setDomValues(verseDetails) {
     console.log(verseDetails);
     this.verse.innerHTML = verseDetails.verse
@@ -44,6 +43,7 @@ export default class DomEngine {
     this.tafsirName.innerHTML = `Tafsir: ${verseDetails.tafsirName}`
     this.hiddenContent.hidden = true;
     this.textInput.value = ""
+    this.successMsg.hidden = false
     // this.reciterName.innerHTML = `Audio ${verseDetails.reciterName}`
     this.successMsg.innerHTML = ""
     this.verseAudio = this.verses[this.selectedVerse].audio
@@ -93,17 +93,14 @@ export default class DomEngine {
     }
   }
 
-
-
-
   showContent() {
-
     return hiddenContent.hidden = false;
   }
 
   // # when the user gives up reveal the right answers, not sure how to explain this
   revealAnswer() {
     if (hiddenContent.hidden) {
+      this.successMsg.hidden = true
       this.showContent();
     }
   }
@@ -123,29 +120,5 @@ export default class DomEngine {
     console.log(this.verses);
     this.setDomValues(verseDetails);
   }
-
-
-  audioPlayer() {
-    // This will allow us to play video later...
-    this.verseAudio.load();
-    fetchVideoAndPlay();
-  }
-
-  fetchAudioAndPlay() {
-    fetch(this.verseAudio)
-      .then(response => response.blob())
-      .then(blob => {
-        this.verseAudio.srcObject = blob;
-        return this.verseAudio.play();
-      })
-      .then(_ => {
-        ` Video playback started ;)`
-      })
-      .catch(e => {
-        ` Video playback failed ;(`
-      })
-  }
-
-
 
 }
