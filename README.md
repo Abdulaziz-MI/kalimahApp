@@ -37,16 +37,16 @@ Anyone that has learnt language beyond their mother tongue will tell say 'you mu
 
 
 ## :zap: Technology
-HTML | CCS and Bootstrap | Vanilla JavaScript | APIs| 
+HTML | CCS and Bootstrap | Vanilla JavaScript | APIs | 
 
 This is a front-end app that makes API get requests for the verse data via Quran.com's API:
 https://quran.api-docs.io/v4/getting-started/introduction
 
 For this API, I used Postman to help me with the get request. I had to develop a method of getting a verse index in this format ${A:B}
 
-A = Surah/Chapter
+A = Surah/Chapter number
 
-B = Ayah/Verse
+B = Ayah/Verse number
 
 I used support/metadata.json which has each chapter of the Quran and their verse count alongside other information. Then in MetaData.js, I developed methods to generate and store the needed data for the API and challenge. such as chapter name and verse index.
 
