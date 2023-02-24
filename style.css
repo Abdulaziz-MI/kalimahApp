@@ -1,13 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
 
-/* body, html {
-    background: rgb(59, 58, 58);
-    color: whitesmoke;
-    font-family: Georgia, Times, 'Times New Roman', serif;
-    height: 100%;
-    width: 100%;
-    overflow-x: hidden;
-} */
+@font-face {
+  font-family: uthmani;
+  src: url(/uthmani-font.ttf);
+}
 
 html,
 body {
@@ -62,9 +58,6 @@ body {
     place-content: always center;
     align-content: always center;
   }
-  /* .inputDiv {
-    width: 100%;
-  } */
 }
 
 .sectionDiv {
@@ -151,7 +144,7 @@ h6 {
   color: aliceblue;
   font-weight: bolder;
 }
-#centerDiv .challengeP,
+#centerDiv,
 p {
   text-align: justify;
   text-align-last: center;
@@ -162,8 +155,13 @@ p {
   font-size: clamp(1.1rem, 1vw + 0.5rem, 1.8rem);
   margin: 5px 30px;
 }
-#verse {
+#verse,
+#tafsir {
+  font-family: uthmani !important;
   margin-bottom: 10px;
+  text-align-last: center;
+  font-size: clamp(1.5rem, 1vw + 1.5rem, 2rem);
+  line-height: 4rem;
 }
 
 #successMsg {
