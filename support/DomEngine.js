@@ -6,7 +6,7 @@ import VerseData from './VerseData.js'
 export default class DomEngine {
   constructor() {
 
-    this.metaData = new MetaData();
+    this.metadata = new MetaData();
 
     this.verses = []
     this.selectedVerse = 0
@@ -34,7 +34,6 @@ export default class DomEngine {
 
   }
   setDomValues(verseDetails) {
-    console.log(verseDetails);
     this.verse.innerHTML = verseDetails.verse
     this.verseTranslated.innerHTML = verseDetails.verseForChallenge
     this.chapterName.innerHTML = `${verseDetails.chapterName}, verse ${verseDetails.verseIndex}  `
@@ -51,21 +50,21 @@ export default class DomEngine {
   }
 
 
-  goToNextVerse() {
+  async goToNextVerse() {
     this.selectedVerse++
-    console.log(this.selectedVerse)
+    // console.log(this.selectedVerse)
     if (this.selectedVerse < this.verses.length)
       this.setDomValues(this.verses[this.selectedVerse])
     else
-      this.getNewVerse()
+      await this.getNewVerse()
 
   }
 
   goToPreviousVerse() {
     this.selectedVerse = this.selectedVerse == 0 ? 0 : this.selectedVerse - 1
     this.setDomValues(this.verses[this.selectedVerse])
-    console.log(this.selectedVerse)
-    console.log(this.verses[this.selectedVerse])
+    // console.log(this.selectedVerse)
+    // console.log(this.verses[this.selectedVerse])
 
   }
 
@@ -97,7 +96,6 @@ export default class DomEngine {
     return hiddenContent.hidden = false;
   }
 
-  // # when the user gives up reveal the right answers, not sure how to explain this
   revealAnswer() {
     if (hiddenContent.hidden) {
       this.successMsg.hidden = true
@@ -107,17 +105,17 @@ export default class DomEngine {
 
 
   async getNewVerse() {
-    // getting a new verse Index
-    this.metaData.getMetadata();
+    await this.metadata.getMetadata();
+    // console.log(this.metadata);
+    // console.log(this.metadata.verseIndex);
     // using the verse Index for the API
-    const verseData = new VerseData(this.metaData.verseIndex);
+    const verseData = new VerseData(this.metadata.verseIndex);
     await verseData.getDataFromAPI();
-    //  spreading all the needed verse details in one object for ease of use
-    const verseDetails = { ...this.metaData, ...verseData };
-    console.log(verseDetails);
+    const verseDetails = { ...this.metadata, ...verseData };
+    // console.log(verseDetails);
     // pushing verse details into one array for the prev/next functionality 
     this.verses.push(verseDetails);
-    console.log(this.verses);
+    // console.log(this.verses);
     this.setDomValues(verseDetails);
   }
 

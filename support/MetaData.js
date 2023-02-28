@@ -1,39 +1,46 @@
-import data from "./metadata.json" assert { type: 'json'}
-
 export default class MetaData {
-    constructor(chapterIndex){
-
-        this.chapterIndex = chapterIndex
-
+    constructor(chapterIndex) {
+        this.chapterIndex = chapterIndex;
     }
+
+    async fetchData() {
+        const response = await fetch('support/metadata.json');
+        const data = await response.json();
+        return data;
+    }
+
+    async setChapter(chapterIndex) {
+        const data = await this.fetchData();
+        if (chapterIndex == null) {
+            chapterIndex = this.randomInt(0, data.length);
+        }
+        this.chapterIndex = chapterIndex;
+        return data[chapterIndex];
+    }
+
     randomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    setChapter(chapterIndex) {
-        
-        if (chapterIndex == null) {
-            chapterIndex = this.randomInt(0, data.length)
+    async getData() {
+        if (!this.data) {
+            this.data = await this.fetchData();
         }
-
-        this.chapterIndex = chapterIndex
-
-        return chapterIndex
+        return this.data;
     }
 
-    // ********* this  will return a random verse from a specific surah number using the parametre
-    getRandomVerseByChapter() {
-        this.chapter = data[this.chapterIndex - 1]
-        this.chapterName = `${this.chapter.name} (${this.chapter.translated_name})`
-        this.verseIndex = `${this.chapterIndex}:${this.randomInt(1, this.chapter.verse_count)}`
+    async getRandomVerseByChapter() {
+        const data = await this.getData();
+        this.chapter = data[this.chapterIndex - 1];
+        this.chapterName = `${this.chapter.name} (${this.chapter.translated_name})`;
+        this.verseIndex = `${this.chapterIndex}:${this.randomInt(1, this.chapter.verse_count)}`;
     }
 
-    getMetadata(){
-        this.setChapter()
-        this.getRandomVerseByChapter()
-        delete this.chapter
-        delete this.chapterIndex
-        // console.log(this.verseIndex);
+    async getMetadata() {
+        await this.setChapter(null);
+        await this.getRandomVerseByChapter();
+        delete this.chapter;
+        delete
+            delete this.chapterIndex;
     }
-
 }

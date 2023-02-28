@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
         href="https://fonts.googleapis.com/css2?family=Cabin&family=Lilita+One&family=Montserrat&family=Noto+Naskh+Arabic&family=Roboto:wght@100;400&display=swap"
         rel="stylesheet">
@@ -29,10 +31,11 @@
             <div class="col-12" id="centerDiv">
 
                 <h6>Surah and Verse number</h6>
-                <p class="challengeP" id="chapterName"></p>
+                <p class="" id="chapterName"></p>
 
-                <h6>Verse</h6>
-                <p class="challengeP" id="verse"><br></p>
+                <h6 class="mb-0 mt-2">Verse</h6>
+
+                <p class=" challengeP  place-items-central" id="verse"><br></p>
 
 
                 <div id="audioAndVerseSelectionDiv" class="inputDiv">
@@ -44,16 +47,16 @@
                 </div>
 
                 <h6>English Translation</h6>
-                <p class="challengeP" id="verseTranslated"><br></p>
+                <p class="challengeP place-items-central " id="verseTranslated"><br></p>
 
 
                 <p id='successMsg'></p>
 
                 <div id="hiddenContent">
                     <h6> The Missing Word</h6>
-                    <p class="challengeP" id="missingWord" name='missingWord'> </p>
+                    <p id="missingWord" name='missingWord'> </p>
                     <h6 id="tafsirName"></h6>
-                    <p class="challengeP" id="tafsir" name='tafsir'> <br></p>
+                    <p class="challengeP place-items-central" id="tafsir" name='tafsir'> <br></p>
                 </div>
 
                 <div class="inputDiv">
@@ -69,10 +72,8 @@
         </div>
         </article>
 
-        <script type="module" src="script.js"></script>
-
-
-
+        <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+        <script src="script.js" type="module"></script>
 </body>
 
 </html>

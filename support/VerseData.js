@@ -1,3 +1,5 @@
+import MetaData from "./MetaData.js"
+
 export default class VerseData {
     constructor(verseIndex) {
         this.verseIndex = verseIndex
@@ -28,20 +30,19 @@ export default class VerseData {
 
     async getQuranAndAudio(translation = 131, reciter = this.randomReciter) {
 
-        console.log(this.randomReciter);
+        // console.log(`The randomly selected reciter is: ${this.reciterName}`);
 
-        console.log(`The randomly selected reciter is: ${this.reciterName}`);
-
-
-        const url =
-            `https://api.quran.com/api/v4/verses/by_key/${this.verseIndex}?language=en
-        &words=true&translations=${translation}&audio=${reciter}&fields=text_imlaei`;
+        // console.log(this.verseIndex);
+        const url = `https://api.quran.com/api/v4/verses/by_key/${this.verseIndex}?language=en&words=true&translations=${translation}&audio=${reciter}&fields=text_imlaei`;
         const response = await fetch(url)
+        // console.log(response);
         const json = await response.json();
+        // console.log(json);
 
         this.verse = json.verse.text_imlaei;
         this.verseTranslated = json.verse.translations[0].text;
-        this.verseForChallenge = this.verseTranslated.split(" ");
+        this.cleanedStr = this.verseTranslated.replace(/<[^>]*>|[0-9]/gm, '');
+        this.verseForChallenge = this.cleanedStr.split(" ");
         this.randomWordIndex = this.randomInt(0, this.verseForChallenge.length - 1);
         const regex = /[!"#$%""".&'(˹˺)*+,,-./:;<=>?@[\]^_`{|}~]/g;
         this.missingWord = this.verseForChallenge[this.randomWordIndex].replace(regex, "").toLowerCase();
@@ -50,9 +51,7 @@ export default class VerseData {
         }
         this.verseForChallenge[this.randomWordIndex] = "____";
         this.verseForChallenge = this.verseForChallenge.join(" ");
-        this.audio = `https://verses.quran.com/${json.verse.audio.url}`
-
-
+        this.audio = `https://verses.quran.com/${json.verse.audio.url}`;
     }
 
     // *********
