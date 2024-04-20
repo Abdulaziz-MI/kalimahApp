@@ -16,13 +16,14 @@ export default class DomEngine {
     this.missingWord = document.querySelector('#missingWord')
     this.tafsir = document.querySelector('#tafsir')
     this.tafsirName = document.querySelector('#tafsirName')
+    this.tafsirEnglishName = document.querySelector('#tafsirEnglishName')
     this.textInput = document.querySelector("#textInput");
     this.submitBtn = document.querySelector("#submitBtn");
     this.revealBtn = document.querySelector("#revealBtn");
     this.hiddenContent = document.querySelector("#hiddenContent");
     this.successMsg = document.querySelector("#successMsg");
     this.audioPlayer = document.querySelector("#audioPlayer");
-    // this.reciterName = document.querySelector('.reciterName')
+    this.reciterName = document.querySelector('#reciterName')
     this.previousVerseBtn = document.querySelector("#previousVerseBtn")
     this.nextVerseBtn = document.querySelector("#nextVerseBtn")
 
@@ -39,12 +40,13 @@ export default class DomEngine {
     this.chapterName.innerHTML = `${verseDetails.chapterName}, verse ${verseDetails.verseIndex}  `
     this.missingWord.innerHTML = verseDetails.missingWord
     this.tafsir.innerHTML = verseDetails.tafsir
-    this.tafsirName.innerHTML = `Tafsir: ${verseDetails.tafsirName}`
+    this.tafsirName.innerHTML = `${verseDetails.tafsirName}`
+    this.tafsirEnglishName.innerHTML = `${verseDetails.tafsirEnglishName}`
     this.hiddenContent.hidden = true;
     this.textInput.value = ""
     this.successMsg.hidden = false
-    // this.reciterName.innerHTML = `Audio ${verseDetails.reciterName}`
     this.successMsg.innerHTML = ""
+    this.reciterName.innerHTML = verseDetails.reciterName;
     this.verseAudio = this.verses[this.selectedVerse].audio
     this.audioPlayer.src = this.verseAudio
   }

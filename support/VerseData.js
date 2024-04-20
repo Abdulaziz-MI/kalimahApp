@@ -16,9 +16,8 @@ export default class VerseData {
     // *********
     // The two params will be this by default but I plan to give users a choice.
     reciters = {
-        "Ar-Rifai": 5,
-        "Al-Minshawi": 9,
-        "Ash-Shuraym": 10,
+        "Mohammed Al-Minshawi": 9,
+        "Saud Al-Shuraim": 10,
         "AbdulBaset AbdulSamad": 2
     };
 
@@ -62,7 +61,7 @@ export default class VerseData {
         const json = await response.json();
         // console.log(json);
         this.tafsirName = json.tafsir.resource_name;
-        this.tafsirName = `${json.tafsir.resource_name} (${json.tafsir.translated_name.name})`
+        this.tafsirEnglishName = json.tafsir.translated_name.name;
         this.tafsir = json.tafsir.text;
 
     };

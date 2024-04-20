@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="style.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Kalimah App</title>
 </head>
 
@@ -44,6 +45,8 @@
                     <audio class="col-8" id="audioPlayer" controls></audio>
 
                     <button class="verse-select btn col-1 " id="nextVerseBtn">&raquo;</button>
+
+                    <span>Reciter: <span id="reciterName"></span> </span>
                 </div>
 
                 <h6>English Translation</h6>
@@ -55,8 +58,9 @@
                 <div id="hiddenContent">
                     <h6> The Missing Word</h6>
                     <p id="missingWord" name='missingWord'> </p>
-                    <h6 id="tafsirName"></h6>
-                    <p class="challengeP place-items-central" id="tafsir" name='tafsir'> <br></p>
+                    <h6> Tafsir: <span id="tafsirEnglishName"></span> - <span class="ar" id="tafsirName"></span>
+                    </h6>
+                    <p class="ar challengeP place-items-central" id="tafsir" name='tafsir'> <br></p>
                 </div>
 
                 <div class="inputDiv">
