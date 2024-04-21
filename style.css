@@ -14,7 +14,6 @@
 
 html,
 body {
-  padding: 1vh 0;
   text-align: center;
   place-self: center;
   justify-content: center;
@@ -71,7 +70,7 @@ body {
 #headingText h1 {
   font-family: "Roboto";
   font-size: clamp(1rem, 5vw + 1rem, 4.25rem);
-  margin-bottom: 1vh;
+  margin: 40px 0px 0px;
   font-weight: bold;
 }
 
@@ -195,6 +194,7 @@ audio::-webkit-media-controls-panel {
   border: 2px solid black;
 }
 
+.arabic,
 .ar {
   font-family: uthmani !important;
 }
